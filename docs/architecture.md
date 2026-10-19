@@ -2,6 +2,8 @@
 
 `ragebait` is an npm-workspace monorepo with `apps/web` (React, TypeScript, Vite) and `apps/api` (Express, TypeScript). Both use strict TypeScript. The web app has app bootstrap/routing, shared layout/components/services, then feature-owned code. The API composes routes at `src/routes`, handles cross-cutting concerns in `middleware`, validates runtime configuration in `config`, and keeps domain behavior in `features`.
 
-The public API prefix is `/api`; health is `GET /api/health` at `http://localhost:9001/api/health`. Successful API payloads use `{ "data": ... }`; failures use `{ "error": { "code", "message" } }`. No database, authentication, AI integration or third-party service is included.
+The public API prefix is `/api`; health is `GET /api/health` at `http://localhost:9001/api/health`. Successful API payloads use `{ "data": ... }`; failures use `{ "error": { "code", "message" } }`.
+
+Rage Shield is available at `POST /api/rage-shield/analyze`. It sends the submitted text to Groq Chat Completions through the API server only, validates the model's structured JSON response with Zod, and does not use a database or persist content. `GROQ_API_KEY` is server-only configuration; `GROQ_BASE_URL` and `GROQ_MODEL` are configurable for provider and model changes.
 
 Ports are invariant: Vite dev/preview and Nginx listen on `9000`; Express listens on `9001`. Vite proxies browser `/api` to `http://localhost:9001`; Compose Nginx proxies `/api` to `backend:9001`. The browser bundle only uses `/api`, never Docker DNS.

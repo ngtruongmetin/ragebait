@@ -8,6 +8,16 @@ React/Vite frontend and Express API foundation. Requirements: Node.js 22+ and np
 2. Run `npm ci`.
 3. Run `npm run dev`.
 
+To enable Rage Shield AI locally, add a Groq key to `.env`:
+
+```env
+GROQ_API_KEY=your_groq_key
+GROQ_BASE_URL=https://api.groq.com/openai/v1
+GROQ_MODEL=openai/gpt-oss-20b
+```
+
+The key is read only by the Express API. Rage Shield does not store submitted content or analysis history.
+
 Open `http://localhost:9000`. API health is `http://localhost:9001/api/health`. The development server fails rather than changing ports if 9000 is unavailable; the API validates that its port is exactly 9001.
 
 Useful checks: `npm run format:check`, `npm run lint`, `npm run typecheck`, `npm test`, and `npm run build`.

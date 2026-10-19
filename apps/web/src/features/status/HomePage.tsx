@@ -1,238 +1,28 @@
-import { HealthStatusCard } from './HealthStatus';
+import { Link } from 'react-router-dom';
 
 const signs = [
-  'Tiêu đề gây sốc',
-  'Chủ đề nhạy cảm',
-  'Ngôn từ công kích',
-  'Thiếu ngữ cảnh',
-  'Gài lời tranh cãi',
+  ['Ngôn từ kích động', 'Từ ngữ hạ thấp, tuyệt đối hóa hoặc cố làm người đọc bức xúc.'],
+  ['Khái quát hóa, chia phe', 'Lấy một trường hợp để kết luận về cả một nhóm hoặc dựng đối lập “chúng ta - họ”.'],
+  ['Thiếu ngữ cảnh', 'Cắt một phát ngôn, dữ liệu hoặc hình ảnh ra khỏi bối cảnh quan trọng.'],
+  ['Tuyên bố khó kiểm chứng', 'Đưa cáo buộc nghiêm trọng nhưng không nêu nguồn, bằng chứng hoặc thời điểm rõ ràng.'],
+  ['Kêu gọi phản ứng gấp', 'Thúc giục chia sẻ, công kích hoặc chọn phe trước khi kịp kiểm chứng.'],
 ];
-const steps = ['Nhận diện', 'Dừng lại', 'Kiểm chứng', 'Cân nhắc', 'Hành động'];
 
 export function HomePage() {
   return (
     <div className="landing-page">
-      <section className="hero" id="ragebait">
-        <div className="wrap hero-grid">
-          <div>
-            <p className="badge">CẨM NANG RAGE SHIELD</p>
-            <h1>
-              Đừng để cơn giận <span>lái</span> bạn trên mạng.
-            </h1>
-            <p className="lede">
-              Nhận diện Rage Bait, làm chủ cảm xúc và chọn cách phản hồi văn minh.
-            </p>
-            <div className="actions">
-              <a className="button dark" href="#rage-shield">
-                Xem 5 bước
-              </a>
-              <a className="button light" href="#dau-hieu">
-                Nhận biết dấu hiệu
-              </a>
-            </div>
-          </div>
-          <GuideMockup />
-        </div>
-      </section>
-      <section className="marquee">
-        <div>
-          TIKTOK <b>•</b> FACEBOOK <b>•</b> YOUTUBE <b>•</b> INSTAGRAM <b>•</b> TIKTOK <b>•</b>{' '}
-          FACEBOOK <b>•</b> YOUTUBE <b>•</b> INSTAGRAM
-        </div>
-      </section>
-      <section className="section white" id="dau-hieu">
-        <div className="wrap">
-          <Intro
-            label="RAGE BAIT LÀ GÌ?"
-            title="Nội dung được thiết kế để khiến bạn nổi giận và tương tác."
-          />
-          <div className="contrast">
-            <article className="problem">
-              <p>VÒNG LẶP RAGE BAIT</p>
-              <ol>
-                <li>Gặp nội dung gây kích động</li>
-                <li>Cảm xúc bị đẩy lên cao</li>
-                <li>Bình luận, tranh cãi hoặc chia sẻ</li>
-                <li>Thuật toán phân phối rộng hơn</li>
-              </ol>
-            </article>
-            <article className="solution">
-              <p>BẠN CÓ QUYỀN DỪNG LẠI</p>
-              <h3>Không phải điều gì làm bạn tức giận cũng cần phản hồi ngay.</h3>
-              <p>Khoảng dừng ngắn giúp bạn kiểm chứng thông tin và bảo vệ năng lượng của mình.</p>
-              <a href="#rage-shield">Xem quy trình xử lý →</a>
-            </article>
-          </div>
-          <div className="signs">
-            {signs.map((sign, index) => (
-              <article key={sign}>
-                <span>0{index + 1}</span>
-                <h3>{sign}</h3>
-                <p>
-                  {
-                    [
-                      'Dùng câu chữ quá đà để kéo bạn phản ứng ngay.',
-                      'Khai thác bất đồng để biến trò chuyện thành đối đầu.',
-                      'Gán nhãn, xúc phạm hoặc kích động người xem.',
-                      'Cắt ghép, phiến diện hoặc chưa kiểm chứng đầy đủ.',
-                      'Thúc đẩy bình luận, chia sẻ để lan truyền nhanh hơn.',
-                    ][index]
-                  }
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section shield" id="rage-shield">
-        <div className="wrap">
-          <Intro
-            label="QUY TRÌNH RAGE SHIELD"
-            title="Năm bước để không biến cơn giận thành lượt tương tác."
-          />
-          <div className="steps">
-            {steps.map((step, index) => (
-              <article key={step}>
-                <span>{index + 1}</span>
-                <h3>{step}</h3>
-                <p>
-                  {
-                    [
-                      'Có dấu hiệu câu tương tác, công kích hay bóp méo thông tin không?',
-                      'Nội dung đang khiến mình cảm thấy thế nào?',
-                      'Nguồn tin có đáng tin và đủ ngữ cảnh không?',
-                      'Phản hồi của mình có thật sự phù hợp không?',
-                      'Bỏ qua, kiểm chứng thêm, phản hồi văn minh hoặc báo cáo.',
-                    ][index]
-                  }
-                </p>
-              </article>
-            ))}
-          </div>
-          <p className="note">
-            AI có thể hỗ trợ phân tích dấu hiệu, nhưng quyết định cuối cùng luôn thuộc về bạn.
-          </p>
-        </div>
-      </section>
-      <section className="section sage" id="so-lieu">
-        <div className="wrap">
-          <Intro label="TỪ KHẢO SÁT THỰC TẾ" title="Rage Bait không xa lạ với học sinh THPT." />
-          <p className="source">
-            Khảo sát trực tuyến hợp lệ N = 251 học sinh, Trường THPT Nguyễn Trãi - Bình Dương, 2026.
-          </p>
-          <div className="stats">
-            <article>
-              <strong>79,7%</strong>
-              <p>dùng mạng xã hội từ 2 giờ mỗi ngày trở lên.</p>
-            </article>
-            <article>
-              <strong>56,2%</strong>
-              <p>cho biết TikTok là nền tảng được dùng thường xuyên.</p>
-            </article>
-            <article>
-              <strong>51,6%</strong>
-              <p>đồng ý hoặc hoàn toàn đồng ý về mức độ tiếp xúc Rage Bait.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section className="section white">
-        <div className="wrap">
-          <Intro label="TRONG LÚC BẠN LƯỚT" title="Chọn cách bình tĩnh hơn là cách ồn ào hơn." />
-          <div className="scenarios">
-            <article>
-              <b>HỌC SINH</b>
-              <h3>“Mình muốn bình luận ngay.”</h3>
-              <p>Dừng một phút. Tự hỏi điều gì đang khiến mình nóng lên trước khi gõ.</p>
-            </article>
-            <article>
-              <b>KHI GẶP TIN GÂY SỐC</b>
-              <h3>“Thông tin này đã đủ ngữ cảnh chưa?”</h3>
-              <p>Tìm nguồn gốc, đọc thêm và không lan truyền nội dung chưa kiểm chứng.</p>
-            </article>
-            <article>
-              <b>CỘNG ĐỒNG LỚP HỌC</b>
-              <h3>Phản hồi tôn trọng hoặc không tương tác.</h3>
-              <p>Báo cáo nội dung có hại khi cần. Một lựa chọn bình tĩnh cũng là hành động.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section className="final">
-        <div className="wrap">
-          <p>LÀM CHỦ CÁCH BẠN PHẢN HỒI</p>
-          <h2>
-            Thấy kích động?
-            <br />
-            Đừng vội tương tác.
-          </h2>
-          <a className="button dark" href="#rage-shield">
-            Bắt đầu với RAGE SHIELD
-          </a>
-        </div>
-      </section>
-      <footer>
-        <div className="wrap foot">
-          <div>
-            <h3>↯ ragebait</h3>
-            <p>Nhận diện Rage Bait. Làm chủ cảm xúc. Ứng xử văn minh.</p>
-          </div>
-          <div>
-            <b>KHÁM PHÁ</b>
-            <a href="#dau-hieu">Dấu hiệu</a>
-            <a href="#rage-shield">Rage Shield</a>
-            <a href="#so-lieu">Số liệu</a>
-          </div>
-          <div>
-            <b>TRẠNG THÁI HỆ THỐNG</b>
-            <HealthStatusCard />
-          </div>
-        </div>
-      </footer>
+      <section className="hero" id="ragebait"><div className="wrap hero-grid"><div><p className="badge">CẨM NANG VÀ CÔNG CỤ RAGE SHIELD</p><h1>Đừng để cơn giận <span>lái</span> bạn trên mạng.</h1><p className="lede">Nhận diện dấu hiệu, dừng lại, kiểm chứng và chọn cách phản hồi có trách nhiệm.</p><div className="actions"><Link className="button dark" to="/rageshield">Phân tích nội dung</Link><a className="button light" href="#dau-hieu">Xem dấu hiệu</a></div></div><div className="hero-guide"><p>RAGE SHIELD</p><strong>Nhận diện.<br />Dừng lại.<br />Kiểm chứng.</strong><span>AI chỉ hỗ trợ phân tích. Bạn là người quyết định cách hành động.</span></div></div></section>
+      <section className="marquee"><div>TIKTOK <b>+</b> FACEBOOK <b>+</b> YOUTUBE <b>+</b> INSTAGRAM <b>+</b> TIKTOK <b>+</b> FACEBOOK <b>+</b> YOUTUBE <b>+</b> INSTAGRAM</div></section>
+      <section className="section white" id="dau-hieu"><div className="wrap"><div className="intro"><p>HIỂU ĐÚNG TRƯỚC KHI KẾT LUẬN</p><h2>Rage Bait không chỉ là nội dung làm bạn khó chịu.</h2><span>Một bài viết có thể gây tranh cãi nhưng vẫn là phê bình chính đáng. Cần tách dấu hiệu trong nội dung, độ xác thực của thông tin và bằng chứng về ý định câu tương tác.</span></div><div className="contrast"><article className="problem"><p>KHÔNG VỘI GẮN NHÃN</p><h3>Nội dung gây giận chưa chắc là Rage Bait.</h3><p>Thiếu nguồn chưa tự động chứng minh thông tin sai. Một câu khó nghe cũng không đủ để kết luận người đăng có ý định thao túng cảm xúc.</p></article><article className="solution"><p>ĐIỀU CẦN LÀM</p><h3>Tìm dấu hiệu cụ thể, xem ngữ cảnh và giữ khoảng dừng trước khi phản hồi.</h3><p>Rage Shield giúp bạn đặt câu hỏi đúng thay vì thúc đẩy một kết luận có sẵn.</p><Link to="/rageshield">Mở công cụ phân tích</Link></article></div><div className="signs">{signs.map(([title, description], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div></section>
+      <section className="section shield" id="rage-shield"><div className="wrap"><div className="intro"><p>QUY TRÌNH DÀNH CHO NGƯỜI DÙNG</p><h2>Năm bước để không biến cơn giận thành lượt tương tác.</h2></div><div className="steps"><Step number="1" title="Nhận diện" text="Mình đang thấy dấu hiệu cụ thể nào, hay chỉ không đồng ý với một quan điểm?" /><Step number="2" title="Dừng lại" text="Cảm xúc nào đang xuất hiện? Có cần hoãn bình luận hoặc chia sẻ không?" /><Step number="3" title="Kiểm chứng" text="Nguồn là ai? Thông tin có đủ bối cảnh và được nguồn đáng tin cậy xác nhận không?" /><Step number="4" title="Cân nhắc" text="Phản hồi có giúp giải quyết vấn đề, hay chỉ làm lan truyền nội dung chưa kiểm chứng?" /><Step number="5" title="Hành động" text="Không tương tác, rời tranh luận, phản biện lịch sự, báo cáo, chặn hoặc tìm hỗ trợ khi cần." /></div><p className="note">Rage Shield AI không xác minh sự thật, không chẩn đoán tâm lý và không kết luận chắc chắn về ý định của người đăng chỉ từ một đoạn văn bản.</p></div></section>
+      <section className="section sage" id="so-lieu"><div className="wrap"><div className="intro"><p>DỮ LIỆU TỪ ĐỀ TÀI</p><h2>Kết quả cho thấy cần rèn thói quen dừng lại và kiểm chứng.</h2><span>Các số liệu dưới đây thuộc nghiên cứu tại Trường THPT Nguyễn Trãi - Bình Dương, không đại diện cho mọi học sinh.</span></div><div className="stats"><article><strong>251</strong><p>phiếu khảo sát thực trạng hợp lệ. Riêng thang nhận diện có 249 phản hồi đầy đủ.</p></article><article><strong>79,7%</strong><p>học sinh sử dụng mạng xã hội từ 2 giờ mỗi ngày trở lên. TikTok được dùng thường xuyên bởi 141/251 học sinh.</p></article><article><strong>259</strong><p>học sinh trong đánh giá sau can thiệp. Điểm ứng xử văn minh trên mạng xã hội đạt 3,869/5.</p></article></div></div></section>
+      <section className="section white"><div className="wrap scenarios-wrap"><div className="intro"><h2>AI hỗ trợ tư duy, không thay thế quyết định.</h2><span>Công cụ chỉ phân tích nội dung bạn dán trong lượt hiện tại. Không có tài khoản, không lưu lịch sử và không lấy dữ liệu từ mạng xã hội của bạn.</span></div><div className="scenarios"><article><b>AI CÓ THỂ</b><h3>Chỉ ra cụm từ, lập luận và điều còn thiếu trong đoạn văn bản.</h3><p>AI cũng nêu cách hiểu khác để tránh vội suy đoán ý định của người đăng.</p></article><article><b>AI KHÔNG THỂ</b><h3>Khẳng định bài viết đúng, sai hoặc chắc chắn là Rage Bait.</h3><p>Việc kiểm chứng cần nguồn gốc, bối cảnh và bằng chứng phù hợp.</p></article><article><b>KHI CÓ NGUY CƠ</b><h3>Ưu tiên an toàn, lưu bằng chứng cần thiết và tìm người hỗ trợ đáng tin cậy.</h3><p>Không trả đũa, không phát tán dữ liệu riêng tư và không tổ chức tấn công tập thể.</p></article></div></div></section>
+      <section className="final"><div className="wrap"><p>RAGE SHIELD AI</p><h2>Thấy kích động?<br />Hãy phân tích trước.</h2><Link className="button dark" to="/rageshield">Mở Rage Shield AI</Link></div></section>
+      <footer><div className="wrap foot"><div><h3>ragebait</h3><p>Nhận diện Rage Bait. Làm chủ cảm xúc. Ứng xử có trách nhiệm trên không gian số.</p><Link className="footer-tool-link" to="/rageshield">Dùng Rage Shield AI</Link></div><div><b>ĐIỀU HƯỚNG</b><Link to="/#dau-hieu">Dấu hiệu cần xem xét</Link><Link to="/rageshield">Phân tích với AI</Link><Link to="/#so-lieu">Dữ liệu từ đề tài</Link></div><div><b>PHẠM VI CÔNG CỤ</b><p>AI hỗ trợ đọc dấu hiệu trong văn bản. Công cụ không xác minh sự thật, không lưu nội dung và không thay bạn quyết định.</p></div></div></footer>
     </div>
   );
 }
 
-function Intro({ label, title }: { label: string; title: string }) {
-  return (
-    <div className="intro">
-      <p>{label}</p>
-      <h2>{title}</h2>
-    </div>
-  );
-}
-function GuideMockup() {
-  return (
-    <div className="mockup">
-      <div className="bar">
-        <i />
-        <i />
-        <i /> RAGE SHIELD GUIDE
-      </div>
-      <div className="mock-content">
-        <div className="alert">
-          ! <b>PAUSE BEFORE YOU POST</b>
-          <small>Cảm xúc mạnh không phải tín hiệu để vội phản hồi.</small>
-        </div>
-        <div className="mock-grid">
-          <div>
-            NHẬN DIỆN
-            <br />
-            <b>Giật gân?</b>
-          </div>
-          <div>
-            DỪNG LẠI
-            <br />
-            <strong>60s</strong>
-          </div>
-          <div>
-            KIỂM CHỨNG
-            <br />
-            <b>Tìm nguồn gốc.</b>
-          </div>
-        </div>
-        <div className="mock-bottom">KHÔNG CHIA SẺ KHI CHƯA KIỂM CHỨNG.</div>
-      </div>
-    </div>
-  );
+function Step({ number, title, text }: { number: string; title: string; text: string }) {
+  return <article><span>{number}</span><h3>{title}</h3><p>{text}</p></article>;
 }
