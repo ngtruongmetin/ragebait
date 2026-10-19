@@ -41,11 +41,11 @@ On the DNS provider, create an `A` record for `ragebait.bcic.site` pointing to t
 On an Ubuntu/Debian VPS with Docker Compose, run these commands after cloning the repository:
 
 ```bash
-cp .env.production.example .env.production
-nano .env.production
 chmod +x scripts/deploy-vps.sh scripts/healthcheck-vps.sh
 ./scripts/deploy-vps.sh
 ```
+
+On its first run, `deploy-vps.sh` creates `.env.production` from the example and securely prompts for `GROQ_API_KEY`. Later runs update the repository with `git pull --ff-only`, retain the saved key, build the containers and run the health check. Set `RAGEBAIT_SKIP_PULL=1` to deploy the current checkout without pulling.
 
 Install the reverse-proxy configuration, enable it, and obtain the first certificate:
 
